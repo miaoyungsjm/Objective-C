@@ -47,7 +47,12 @@
 }
 -(void) divide: (double) value
 {
-    accumulator /= value;
+    if (value != 0) {
+        accumulator /= value;
+    }else{
+        NSLog(@"除数为零");
+        accumulator = NAN;
+    }
 }
 
 @end
@@ -82,7 +87,7 @@ int main(int argc, const char * argv[]) {
                 break;
         }
         
-        NSLog(@"%lf %c %lf = %g", value1, operator, value2, [calc getAccumulator]);
+        NSLog(@"%lf %c %lf = %.2f", value1, operator, value2, [calc getAccumulator]);
     }
     return 0;
 }
