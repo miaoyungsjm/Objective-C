@@ -18,22 +18,38 @@ int main(int argc, const char * argv[]) {
         myFraction = [Fraction alloc];  // 分配内存存储空间
         myFraction = [myFraction init]; // 对象初始化
         
-        [myFraction setNumerator: 1];
+        [myFraction setNumerator: 1];   //消息表达式
         [myFraction setDenominator: 3];
         
         NSLog(@"\nThe value of myFraction is :");
-        [myFraction print];
+        [myFraction print]; // 其他实例方法
         
-        
+    
         
         Fraction *myFraction_2 = [[Fraction alloc] init];
-        //        Fraction *myFraction_3 = [Fraction new];
+        // 等价于  Fraction *myFraction_3 = [Fraction new];
         
-        [myFraction_2 setNumerator: 3];
-        [myFraction_2 setDenominator: 7];
+        // 点运算符通常用在属性上，用于设置或取得实例变量的值。其他实例方法是用消息表达式
+//        [myFraction_2 setNumerator: 3];
+//        [myFraction_2 setDenominator: 7];
+        //  等价于
+//        myFraction_2.numerator = 3;
+//        myFraction_2.denominator = 7;
+//        myFraction_2.result = 1.1;
         
-        NSLog(@"\nThe value of myFraction is : %i/%i", [myFraction_2 getNumerator], [myFraction_2 getDenominator]);
+        // 多参数方法
+//        [myFraction_2 setNumerator:3 andDenominator:7 andTest:1.1];
+        [myFraction_2 setParameter:3 :7 :1.1];  // 不带参数名方法
         
+        NSLog(@"\nThe value of myFraction is : %i/%i", myFraction_2.numerator, myFraction_2.denominator);
+        NSLog(@"%f", myFraction_2.test);
     }
     return 0;
 }
+
+
+
+
+
+
+

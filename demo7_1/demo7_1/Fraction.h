@@ -13,9 +13,11 @@
  用于描述类和方法
  */
 @interface Fraction : NSObject
+
+@property int numerator, denominator;
+@property double test;
+
 -(void) print;
--(void) setNumerator: (int)n;
--(void) setDenominator: (int)d;
--(int) getNumerator;
--(int) getDenominator;
+-(void) setNumerator:(int)n andDenominator:(int)d andTest:(double)t;
+-(void) setParameter:(int)n :(int)d :(double)t;
 @end

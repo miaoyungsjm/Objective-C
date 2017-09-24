@@ -13,28 +13,26 @@
  用于描述数据，并实现在接口中声明的方法
  */
 @implementation Fraction
-{
-    int numerator;
-    int denominator;
-}
+//{
+//    int numerator, denominator;
+//    double test;
+//}
+@synthesize numerator, denominator, test;
+
 -(void) print
 {
     NSLog(@"\n%i/%i", numerator, denominator);
 }
--(void) setNumerator: (int)n
+-(void) setNumerator:(int)n andDenominator:(int)d andTest:(double)t
 {
     numerator = n;
-}
--(void) setDenominator: (int)d
-{
     denominator = d;
+    test = t;
 }
--(int) getNumerator
+-(void) setParameter:(int)n :(int)d :(double)t
 {
-    return numerator;
-}
--(int) getDenominator
-{
-    return denominator;
+    numerator = n;
+    denominator = d;
+    test = t;
 }
 @end
