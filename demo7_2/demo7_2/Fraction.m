@@ -8,6 +8,9 @@
 
 #import "Fraction.h"
 
+static int printTime;   // static 关键字，静态变量
+
+
 @implementation Fraction
 
 @synthesize numerator, denominator, result;
@@ -16,17 +19,26 @@
 {
     numerator = n;
     denominator = d;
+    if (d == 0) {
+        numerator = NAN;
+        denominator = NAN;
+    }
 }
 
 -(void) setParameter:(int)n :(int)d
 {
     numerator = n;
     denominator = d;
+    if (d == 0) {
+        numerator = NAN;
+        denominator = NAN;
+    }
 }
 
 -(void) print
 {
     NSLog(@"%i/%i", numerator, denominator);
+    printTime++;
 }
 
 -(double) convertToNum
@@ -35,11 +47,19 @@
     return result;
 }
 
--(void) add:(Fraction *)f
+-(Fraction *) add:(Fraction *)f
 {
-    numerator = numerator * f.denominator + denominator * f.numerator;
-    denominator = denominator * f.denominator;
-    NSLog(@"%i/%i", numerator, denominator);
+    Fraction *rFraction = [[Fraction alloc] init];  // 方达中创建对象，并通过 return 返回一个对象的引用（地址），在 main 中赋给 rFraction
+    
+    rFraction.numerator = numerator * f.denominator + denominator * f.numerator;
+    rFraction.denominator = denominator * f.denominator;
+    
+//    [r reduce];  // self 关键字，指当前对象
+    [rFraction reduce];
+    
+    NSLog(@"%i/%i", rFraction.numerator, rFraction.denominator);
+    
+    return rFraction;
 }
 
 -(void) reduce
@@ -57,6 +77,5 @@
     
     numerator /= u;
     denominator /= u;
-    NSLog(@"%i/%i", numerator, denominator);
 }
 @end

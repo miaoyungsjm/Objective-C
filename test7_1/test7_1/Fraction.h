@@ -1,8 +1,8 @@
 //
 //  Fraction.h
-//  demo7_2
+//  test7_1
 //
-//  Created by ggz on 2017/9/24.
+//  Created by ggz on 2017/9/25.
 //  Copyright © 2017年 ggz. All rights reserved.
 //
 
@@ -13,11 +13,14 @@
 @property int numerator, denominator;
 @property double result;
 
--(void) setNumerator:(int)n andDenominator:(int)d;
 -(void) setParameter:(int)n :(int)d;
 -(void) print;
--(double) convertToNum;
+-(int) rePrintTime;
+-(void) convertToNum;
 -(Fraction *) add:(Fraction *)f;
+-(Fraction *) subtract:(Fraction *)f;
+-(Fraction *) multiply:(Fraction *)f;
+-(Fraction *) divide:(Fraction *)f;
 -(void) reduce;
 
 @end
